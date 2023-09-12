@@ -1,0 +1,80 @@
+<main role="main">
+    <aside role="navigation">
+        <!-- <button class="btn" (click)="showAside()">
+            <i-feather name="x" class="close"></i-feather>
+        </button> -->
+        <img ngsrc="assets/images/logo/rescate-24@2x.png"
+            ng-reflect-ng-src="assets/images/logo/rescate-24-blanco@2x.png" loading="auto" fetchpriority="auto"
+            ng-img="true" src="assets/images/logo/rescate-24-blanco@2x.png" />
+
+        <div class="max-w-[178px] w-full flex justify-start items-center">
+            <h4 class="ml-2 mt-[71px] text-white-50 opacity-50 font-bold">Menu</h4>
+        </div>
+        <ul class="nav-item">
+            <li class="link-item" [ngClass]="currentRouter === '/view/dashboard' ? 'active' : ''">
+                <a [routerLink]="['/view/dashboard']" class="link font-bold text-white-50">
+                    <i-feather name="grid"></i-feather>
+                    <span class="link-text">
+                        Dashboard
+                    </span>
+                </a>
+            </li>
+            <li class="link-item" [ngClass]="currentRouter === '/view/seguimiento-territorial' ? 'active' : ''">
+                <a [routerLink]="['/view/seguimiento-territorial']" class="link font-bold text-white-50">
+                    <i-feather name="map"></i-feather>
+                    <span class="link-text">
+                        Seguimiento territorial
+                    </span>
+                </a>
+            </li>
+            <li class="link-item" [ngClass]="currentRouter === '/view/seguimiento-territorial' ? 'active' : ''">
+                <a [routerLink]="['/view/seguimiento-territorial']" class="link font-bold text-white-50">
+                    <i-feather name="git-branch"></i-feather>
+                    <span class="link-text">
+                        Seguimiento estructura
+                    </span>
+                </a>
+            </li>
+
+        </ul>
+    </aside>
+    <section class="content-main">
+        <nav class="menu">
+            <ul class="nav-content">
+                <li class="nav-item xs:flex xs:justify-start xs:items-center">
+                    <button class="btn" (click)="showAside()">
+                        <i-feather name="menu"></i-feather>
+                    </button>
+                </li>
+                <li class="nav-item border-r border-gray-50 xs:hidden lg:flex">
+                    <button class="btn btn-normal tools-nav">
+                        <i-feather name="user-plus"></i-feather>
+                    </button>
+                    <button class="relative btn btn-normal tools-nav">
+                        <span
+                            class="animate-pulse absolute -top-1 right-1 w-[23.77px] h-[23.77px] rounded-full bg-orange-50 text-[15px] font-bold text-white-50 flex justify-center items-center">4</span>
+                        <span
+                            class="absolute -top-[1px] right-[7px] w-[18px] h-[18px] rounded-full bg-orange-50 text-[15px] font-bold text-white-50 flex justify-center items-center">4</span>
+                        <i-feather name="bell"></i-feather>
+                    </button>
+                    <button class="btn btn-normal tools-nav">
+                        <i-feather name="settings"></i-feather>
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <img class="img-user" ngsrc="assets/images/user/persona-con-con-los-braz-cruzados.png"
+                        ng-reflect-ng-src="assets/images/user/persona-con-con-los-braz-cruzados.png" loading="auto"
+                        fetchpriority="auto" ng-img="true"
+                        src="assets/images/user/persona-con-con-los-braz-cruzados.png" />
+                    <div class="item-info">
+                        <h5>{{user?.username}}</h5>
+                        <span>{{user?.roles}}</span>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <div role="contentinfo" class="content-info">
+            <router-outlet></router-outlet>
+        </div>
+    </section>
+</main>

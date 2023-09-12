@@ -1,0 +1,97 @@
+
+<div class="relative h-full min-h-full  w-full overflow-y-auto flex flex-col justify-start items-center">
+  <div class="content-form-login">
+    <img class="logo" alt="Rescate 24 logo representativo" ngsrc="assets/images/logo/rescate-24@2x.png"
+      ng-reflect-ng-src="assets/images/logo/rescate-24@2x.png" loading="lazy" fetchpriority="auto" ng-img="true"
+      src="assets/images/logo/rescate-24@2x.png" />
+
+    <h1 class="h1">Iniciar sesión</h1>
+    <form #form="ngForm" [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="max-w-[445px] w-full">
+
+      <div class="form-group">
+        <div class="icon">
+          <i-feather name="user"></i-feather>
+        </div>
+        <div class="action">
+          <input type="text" formControlName="username" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f['username'].errors }" autocomplete="off" required />
+          <label>
+            <span>
+              Correo electrónico o número de cédula
+            </span>
+          </label>
+        </div>
+      </div>
+      <div *ngIf="submitted && f['username'].errors" class="form-error">
+        <span *ngIf="f['username'].errors['required']">
+          Campo requerido*
+        </span>
+      </div>
+
+      <div class="form-group">
+        <div class="icon">
+          <i-feather name="lock"></i-feather>
+        </div>
+        <div class="action">
+          <input type="password" formControlName="password" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f['password'].errors }" autocomplete="off" required />
+          <label>
+            <span>
+              Contraseña
+            </span>
+          </label>
+        </div>
+      </div>
+      <div *ngIf="submitted && f['password'].errors" class="form-error">
+        <span *ngIf="f['password'].errors['required']">
+          Campo requerido*
+        </span>
+      </div>
+
+      <re-captcha id="recaptcha" name="recaptcha" formControlName="token" [siteKey]="token" required
+        [class.is-invalid]="f['token'].invalid && (f['token'].dirty || f['token'].touched)"></re-captcha>
+
+      <div class="form-check mt-5">
+        <label for="rememberUser">
+          <input type="checkbox" name="rememberUser" id="rememberUser">
+          <span class="check-txt">
+            Recordar usuario
+          </span>
+          <span class="custom-check"></span>
+        </label>
+      </div>
+
+      <button [disabled]="loading" class="btn-lg bg-purple-100 text-white-50 my-4">
+        <span *ngIf="loading"  class="text-white-50 relative w-[32px]">
+          <i-feather name="loader" class="animate-spin absolute -top-1 -left-7"></i-feather>
+        </span>
+        Entrar
+      </button>
+
+      <div class="flex flex-col items-center justify-center mt-8">
+        <a [routerLink]="['/']" fragment="education">
+          ¿Olvidó su contraseña?
+        </a>
+        <a [routerLink]="['/']" fragment="education" class="btn btn-normal max-w-[164px] text-center mt-8">
+          Activar cuenta
+        </a>
+      </div>
+
+      <!-- <div *ngIf="error" class="alert alert-danger mt-3 mb-0">
+        {{ error }}
+      </div> -->
+    </form>
+  </div>
+  <span class="max-w-[614px] w-full text-white-100 text-sm my-[14px] text-center">
+    Al ingresar aceptas los
+    <a [routerLink]="['/']" fragment="education" class="text-sm font-bold text-white-50">
+      Términos
+    </a>
+    del Servicio y las
+    <a [routerLink]="['/']" fragment="education" class="text-sm font-bold text-white-50">
+      Políticas de Privacidad
+    </a>
+    de Rescate 24
+  </span>
+</div>
+
